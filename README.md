@@ -14,7 +14,6 @@ Nothing too wild, just C++ libraries including:
 - fstream - file manipulation
 - stdexcept - exceptions
 - queue - queue data structure
-- IWANTMORE - the key for the Easter Egg file!
 - bitset - converting to binary
 - string - strings
 - algorithm - for reversing the key
