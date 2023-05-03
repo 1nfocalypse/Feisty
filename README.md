@@ -1,8 +1,8 @@
 <p align="center">
-  <img alt="Feisty Project Logo" src="https://i.imgur.com/CqGC3aL.png">
+  <img alt="Feisty Project Logo" src="https://i.imgur.com/eoK8d9p.png">
 </p>
 <h1 align="center">Feisty</h3>
-<h6 align="center">Toy Feistel Network</h3>
+<h6 align="center">Toy Feistel Network Encryption and Decryption</h3>
 
 
 # Feisty
