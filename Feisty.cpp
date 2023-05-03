@@ -151,7 +151,7 @@ char Feistel(char x, char k, int rounds, bool encOrDec) {
 // post: result of r XOR k is returned.
 // error: N/A
 std::string strXOR(std::string r, std::string k) {
-	std::string retStr = "";
+    std::string retStr = "";
     for (size_t i = 0; i < 4; i++) {
         if (r[i] == '1' || k[i] == '1') {
             if (r[i] == '1' && k[i] == '1') {
