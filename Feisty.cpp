@@ -16,12 +16,12 @@ std::string strXOR(std::string x, std::string y);
 int main() {
 	size_t menChoice;
 	while (1) {
-		std::cout << "███████╗███████╗██╗███████╗████████╗██╗   ██╗" << std::endl;
-		std::cout << "██╔════╝██╔════╝██║██╔════╝╚══██╔══╝╚██╗ ██╔╝" << std::endl;
-		std::cout << "█████╗  █████╗  ██║███████╗   ██║    ╚████╔╝ " << std::endl;
-		std::cout << "██╔══╝  ██╔══╝  ██║╚════██║   ██║     ╚██╔╝  " << std::endl;
-		std::cout << "██║     ███████╗██║███████║   ██║      ██║   " << std::endl;
-		std::cout << "╚═╝     ╚══════╝╚═╝╚══════╝   ╚═╝      ╚═╝   " << std::endl;
+		std::cout << "    ______     _      __       " << std::endl;
+		std::cout << "   / ____/__  (_)____/ /___  __" << std::endl;
+		std::cout << "  / /_  / _ \\/ / ___/ __/ / / /" << std::endl;
+		std::cout << " / __/ /  __/ (__  ) /_/ /_/ / " << std::endl;
+		std::cout << "/_/    \\___/_/____/\\__/\\__, /  " << std::endl;
+		std::cout << "                      /____/   " << std::endl;
 		std::cout << "---------------------------------------------------\n";
 		std::cout << "Warning: Feistel Networks are out of date. Please DO NOT use for legitimate encryption.\n";
 		std::cout << "By using this program, you acknowledge you are solely responsible for any damages.\n";
