@@ -10,13 +10,13 @@ Feisty is a toy implementation of a Feistel Network. I might work more on making
 
 # Dependencies
 Nothing too wild, just C++ libraries including:
-iostream - IO
-fstream - file manipulation
-stdexcept - exceptions
-queue - queue data structure
-bitset - converting to binary
-string - strings
-algorithm - for reversing the key
+- iostream - IO
+- fstream - file manipulation
+- stdexcept - exceptions
+- queue - queue data structure
+- bitset - converting to binary
+- string - strings
+- algorithm - for reversing the key
 
 # Contributing
 Submit a PR if you want. Please comment your code if you do, but it's not a deal breaker. Submit what you got. 
