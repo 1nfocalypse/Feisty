@@ -1,26 +1,29 @@
 <p align="center">
-  <img alt="Feisty Project Logo" src="https://i.imgur.com/eoK8d9p.png">
+  <a href="https://github.com/1nfocalypse/Feisty">
+	<img alt="Feisty" src="https://i.imgur.com/eoK8d9p.png"/>
+  </a>
 </p>
-<h1 align="center">Feisty</h3>
-<h6 align="center">Toy Feistel Network Encryption and Decryption</h3>
-
+<p align="center">
+  <a href="https://choosealicense.com/licenses/gpl-3.0/">
+  	<img alt="License: GPL-3.0" src="https://img.shields.io/github/license/1nfocalypse/Feisty"/>
+  </a>
+</p>
+<h2 align="center">Feisty</h3>
+<h3 align="center">
+  A Toy Feistel Network Implementation
+</h2>
+<p align="center">
+  By <a href="https://github.com/1nfocalypse">1nfocalypse</a>
+</p>
 
 # What is it?
-Feisty is a toy implementation of a Feistel Network. I might work more on making it actually usable, but who knows. I do not recommend serious use.
-
-# Dependencies
-Nothing too wild, just C++ libraries including:
-- iostream - IO
-- fstream - file manipulation
-- stdexcept - exceptions
-- queue - queue data structure
-- bitset - converting to binary
-- string - strings
-- algorithm - for reversing the key
+Feisty is a toy implementation of a Feistel Network. I previously released a bugged version, which has now been fixed. Feisty is also now equipped with the ability to utilize 256 bit keys. Feistel Networks are still feasibly secure,
+however, serious usage is discouraged due to theoretical attacks being possible. For more information on Feistel Networks and other cryptographic schemes, please be sure to check out my writeup on mathematical cryptography, which can be 
+found [here](https://github.com/1nfocalypse/CryptoWriteup).
 
 # Contributing
-Submit a PR if you want. Please comment your code if you do, but it's not a deal breaker. Submit what you got. 
+If you would like to submit a PR, please feel free to do so. There are very likely some bugs hiding in here that I didn't sniff out. If you choose to submit a PR, please explain your changes and I'll be happy to review it. Thank you!
 
 # Disclaimer
-This thing has bugs and Feistel Networks are outdated. I did this in a night cause I thought it would be fun. DO NOT TRUST IT FOR SERIOUS CRYPTOGRAPHY.
-I will eventually be doing my own somewhat-more-legitimate implementations of cryptographically secure protocols, such as RSA and ElGamal (potentially even with Elliptic Curve Groups!) along with publishing my abbreviated notes on cryptography. Look out for that in the future! And while development has been paused on Reason while I get demolished by my school, I'm still thinking about it. A lot. Some new ideas. So look forward to that this summer if you care about that project. Thank you for checking out Feisty!
+Feistel Networks are outdated, and this is largely an educational toy. While it has the capacity to encrypt and decrypt messages, it is not meant for serious use. Please consider alternative cryptosystems, such as AES, for contemporary 
+needs. By using this software, you acknowledge that neither I nor any contributors are responsible for any losses or damage that may occur. For more information, please consult the license, which can be found [here](LICENSE).
