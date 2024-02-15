@@ -124,7 +124,6 @@ void crypt(bool encOrDec) {
     }
     key = iterativeHash(key);
     // key populated with 512 bits. 256 effectively utilized due to key splicing methodology.
-    // this is fine: you need to pass context in to know where to start in the key.
 	size_t rounds = 16; // consider buffing to 32
 	std::ifstream rawFile;
 	std::queue<char> eQueue;
@@ -142,10 +141,6 @@ void crypt(bool encOrDec) {
 	}
 	rawFile.close();
 	for (size_t i = 0; i < line.length(); i++) {
-        // we need to ship the entire key, along with the starting index.
-        // for encryption, works normally
-        // for decryption, add 16 (# rounds), work backwards.
-        // i % key.length()
 		eQueue.push(Feistel(line[i],key, rounds, encOrDec, i));
 	}
 	std::ofstream outfile;
