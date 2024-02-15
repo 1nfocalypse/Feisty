@@ -30,7 +30,7 @@
 uint32_t customHash(uint32_t num);
 std::string iterativeHash(std::string key);
 void crypt(bool encOrDec); // 0 = enc | 1 = dec
-char Feistel(char x, char k, int rounds, bool encOrDec);
+char Feistel(char x, std::string k, int rounds, bool encOrDec, int iteration); // needs to have iteration number passed too
 std::string strXOR(std::string x, std::string y) noexcept;
 
 // main()
@@ -48,8 +48,7 @@ int main() {
         std::cout << "/_/    \\___/_/____/\\__/\\__, /  " << std::endl;
         std::cout << "                      /____/   " << std::endl;
         std::cout << "---------------------------------------------------\n";
-        std::cout << "Warning: Feistel Networks are out of date. Please DO NOT use for legitimate encryption.\n";
-        std::cout << "By using this program, you acknowledge you are solely responsible for any damages.\n";
+        std::cout << "Warning: Feistel Networks are out of date. For more information, consult the README.\n";
         std::cout << "Created by 1nfocalypse: https://github.com/1nfocalypse\n\n\n";
         std::cout << "Please choose a menu option below.\n";
         std::cout << "---------------------------------------------\n";
@@ -125,7 +124,8 @@ void crypt(bool encOrDec) {
     }
     key = iterativeHash(key);
     // key populated with 512 bits. 256 effectively utilized due to key splicing methodology.
-	size_t rounds = 16; // hard cap at 16 rounds.
+    // this is fine: you need to pass context in to know where to start in the key.
+	size_t rounds = 16; // consider buffing to 32
 	std::ifstream rawFile;
 	std::queue<char> eQueue;
 	rawFile.open(path.c_str());
@@ -142,7 +142,11 @@ void crypt(bool encOrDec) {
 	}
 	rawFile.close();
 	for (size_t i = 0; i < line.length(); i++) {
-		eQueue.push(Feistel(line[i],key[i % key.length()], rounds, encOrDec));
+        // we need to ship the entire key, along with the starting index.
+        // for encryption, works normally
+        // for decryption, add 16 (# rounds), work backwards.
+        // i % key.length()
+		eQueue.push(Feistel(line[i],key, rounds, encOrDec, i));
 	}
 	std::ofstream outfile;
 	outfile.open(outfilename);
@@ -159,7 +163,7 @@ void crypt(bool encOrDec) {
 // POST: key padded to 256 bits with deterministic pseudorandomness
 // WARNINGS: collisions may occur - collision resistance not tested
 // STATUS: Completed, tested.
-// Attribution: sourced from // original hash found at https://www.cs.ubc.ca/~rbridson/docs/schechter-sca08-turbulence.pdf
+// Attribution: sourced from https://www.cs.ubc.ca/~rbridson/docs/schechter-sca08-turbulence.pdf
 uint32_t customHash(uint32_t num) {
     num = num ^ 2747636419;
     num = (num * 2654435769) % UINT32_MAX;
@@ -198,30 +202,30 @@ std::string iterativeHash(std::string key) {
 // POST: character has been encrypted/decrypted
 // WARNINGS: Strongly exception safe
 // STATUS: Completed, tested.
-char Feistel(char x, char k, int rounds, bool encOrDec) {
+char Feistel(char x, const std::string k, int rounds, bool encOrDec, int iter) {
     std::string clear = std::bitset<8>(x).to_string();
-    std::string key = std::bitset<8>(k).to_string().substr(0,4);
     std::string preR, preL;
     if (encOrDec) {
-        preR = clear.substr(0,4);
-        preL = clear.substr(4,8);
+        preR = clear.substr(0, 4);
+        preL = clear.substr(4, 4);
     } else {
-        preL = clear.substr(0,4);
-        preR = clear.substr(4,8);
+        preL = clear.substr(0, 4);
+        preR = clear.substr(4, 4);
     }
     std::string newL, newR;
-    for (int i = 0; i < rounds; i++) {
-        if (!encOrDec) {
-            newL = preR;
+    std::string key;
+    for (int i = 0; i < rounds; ++i) {
+        int keyIndex = iter + (encOrDec ? i : rounds - i - 1);
+        key = std::bitset<8>(k[keyIndex % k.length()]).to_string().substr(0, 4);
+        if (encOrDec) {
             newR = strXOR(preL, strXOR(preR, key));
-            preL = newL;
-            preR = newR;
+            newL = preR;
         } else {
-            newR = preL;
             newL = strXOR(preR, strXOR(preL, key));
-            preL = newL;
-            preR = newR;
+            newR = preL;
         }
+        preL = newL;
+        preR = newR;
     }
     std::string str;
     if (encOrDec) {
@@ -229,8 +233,8 @@ char Feistel(char x, char k, int rounds, bool encOrDec) {
     } else {
         str = preR + preL;
     }
-    int num = std::stoi(str,0,2);
-    char retChar = (char)num;
+    int num = std::stoi(str, 0, 2);
+    char retChar = static_cast<char>(num);
     return retChar;
 }
 
