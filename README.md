@@ -16,8 +16,6 @@
   By <a href="https://github.com/1nfocalypse">1nfocalypse</a>
 </p>
 
-# I AM AWARE I FORGOT TO IMPLEMENT FULL SUBKEY INTERLEAVING. WORKING ON IT NOW. IN THE MEANTIME, DO NOT TRUST
-
 # What is it?
 Feisty is a toy implementation of a Feistel Network. I previously released a bugged version, which has now been fixed. Feisty is also now equipped with the ability to utilize 256 bit keys. Feistel Networks are still feasibly secure,
 however, serious usage is discouraged due to theoretical attacks being possible. For more information on Feistel Networks and other cryptographic schemes, please be sure to check out my writeup on mathematical cryptography, which can be 
