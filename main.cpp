@@ -15,13 +15,13 @@
  * /_/    \___/_/____/\__/\__, /
  *                       /____/
  ***********************************************************************************************************************
- * Feisty is a means of encrypting data via a viginere cipher. While it is currently equipped to encode data passed as a
+ * Feisty is a means of encrypting data via a Feistel Network. While it is currently equipped to encode data passed as a
  * text file, it can be modified to accept raw binaries. It is licensed under GPLv3. For more information on the
  * license, please see the included license in the directory. For more information on the cryptographic scheme, please
  * check out the writeup I wrote on mathematical cryptography:
  * https://github.com/1nfocalypse/CryptoWriteup?tab=readme-ov-file#feistel-networks
  * For more information on usage, please check out the included README.
- * Have fun!
+ * Have fun! Remember, this is a toy!
  * Project music recommendation: RZVX ft. VALAK - YOU BETTER RUN (Techno) - https://www.youtube.com/watch?v=xtJE3_GMZrI
  ***********************************************************************************************************************
  */
